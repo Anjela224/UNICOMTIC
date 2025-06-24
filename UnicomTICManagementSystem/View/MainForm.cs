@@ -24,10 +24,10 @@ namespace UnicomTICManagementSystem.View
         }
         private void SetupRoleBasedUI()
         {
-            // Admin - show everything
+            
             if (role == "Admin")
             {
-                // Do nothing - Admin can see all buttons
+                
             }
             else if (role == "Staff")
             {
@@ -36,6 +36,7 @@ namespace UnicomTICManagementSystem.View
                 btnSubject.Visible = false;
                 btnlecturer.Visible = false;
                 btnroom.Visible = false;
+                btnAttend.Visible = false;
             }
             else if (role == "Lecturer")
             {
@@ -46,16 +47,19 @@ namespace UnicomTICManagementSystem.View
                 btnroom.Visible = false;
                 btnexma.Visible = true;
                 btntt.Visible = true;
+                btnAttend.Visible = true;   
             }
             else if (role == "Student")
             {
-                btnStudent.Visible = true; // to view their own info (optional)
+                btnStudent.Visible = true; 
                 btnCourse.Visible = false;
                 btnSubject.Visible = false;
                 btnlecturer.Visible = false;
                 btnroom.Visible = false;
-                btnexma.Visible = false;  // student view marks should be on another page
-                btntt.Visible = true;     // view timetable
+                btnexma.Visible = false;  
+                btntt.Visible = true; 
+                btnAttend.Visible = true;
+                btnAttend.Text = "View Attendance";
             }
         }
 
@@ -143,8 +147,16 @@ namespace UnicomTICManagementSystem.View
             var result = MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                this.Close();
+                this.Hide(); // hide current
+                LoginForm login = new LoginForm();
+                login.ShowDialog(); // wait for login
+                this.Close(); // now close current form
             }
+        }
+
+        private void btnAttend_Click(object sender, EventArgs e)
+        {
+            LoadFormInPanel(new AttendanceManagement());
         }
     }
 }

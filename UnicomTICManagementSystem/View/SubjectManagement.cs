@@ -56,6 +56,7 @@ namespace UnicomTICManagementSystem.View
             {
                 SubjectName = txtSubjectName.Text.Trim(),
                 CourseID = (int)cmbCourse.SelectedValue
+
             };
 
             subjectController.AddSubject(subject);

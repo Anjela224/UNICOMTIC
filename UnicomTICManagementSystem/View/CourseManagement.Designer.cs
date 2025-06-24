@@ -45,35 +45,40 @@
             this.groupBox1.Controls.Add(this.txtCourseName);
             this.groupBox1.Controls.Add(this.lblCname);
             this.groupBox1.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(113, 45);
+            this.groupBox1.Location = new System.Drawing.Point(85, 37);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(330, 137);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(248, 111);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Course Entry";
             // 
             // txtCourseName
             // 
-            this.txtCourseName.Location = new System.Drawing.Point(142, 40);
+            this.txtCourseName.Location = new System.Drawing.Point(106, 32);
+            this.txtCourseName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCourseName.Name = "txtCourseName";
-            this.txtCourseName.Size = new System.Drawing.Size(156, 27);
+            this.txtCourseName.Size = new System.Drawing.Size(118, 23);
             this.txtCourseName.TabIndex = 1;
             // 
             // lblCname
             // 
             this.lblCname.AutoSize = true;
-            this.lblCname.Location = new System.Drawing.Point(21, 40);
+            this.lblCname.Location = new System.Drawing.Point(16, 32);
+            this.lblCname.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCname.Name = "lblCname";
-            this.lblCname.Size = new System.Drawing.Size(105, 20);
+            this.lblCname.Size = new System.Drawing.Size(88, 16);
             this.lblCname.TabIndex = 0;
             this.lblCname.Text = "Course Name";
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Cambria", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(127, 202);
+            this.btnAdd.Location = new System.Drawing.Point(95, 164);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(81, 30);
+            this.btnAdd.Size = new System.Drawing.Size(61, 24);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -82,9 +87,10 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Cambria", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(255, 202);
+            this.btnUpdate.Location = new System.Drawing.Point(191, 164);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(81, 30);
+            this.btnUpdate.Size = new System.Drawing.Size(61, 24);
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -93,9 +99,10 @@
             // btndel
             // 
             this.btndel.Font = new System.Drawing.Font("Cambria", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndel.Location = new System.Drawing.Point(391, 202);
+            this.btndel.Location = new System.Drawing.Point(293, 164);
+            this.btndel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btndel.Name = "btndel";
-            this.btndel.Size = new System.Drawing.Size(81, 30);
+            this.btndel.Size = new System.Drawing.Size(61, 24);
             this.btndel.TabIndex = 3;
             this.btndel.Text = "DELETE";
             this.btndel.UseVisualStyleBackColor = true;
@@ -104,26 +111,28 @@
             // dgvCourse
             // 
             this.dgvCourse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCourse.Location = new System.Drawing.Point(113, 287);
+            this.dgvCourse.Location = new System.Drawing.Point(85, 233);
+            this.dgvCourse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvCourse.Name = "dgvCourse";
             this.dgvCourse.RowHeadersWidth = 51;
             this.dgvCourse.RowTemplate.Height = 24;
-            this.dgvCourse.Size = new System.Drawing.Size(403, 151);
+            this.dgvCourse.Size = new System.Drawing.Size(302, 123);
             this.dgvCourse.TabIndex = 4;
             this.dgvCourse.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCourse_CellContentClick);
             // 
             // CourseManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.dgvCourse);
             this.Controls.Add(this.btndel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.Color.Black;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CourseManagement";
             this.Text = "CourseManagement";
             this.Load += new System.EventHandler(this.CourseManagement_Load);

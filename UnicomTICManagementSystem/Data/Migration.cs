@@ -21,13 +21,7 @@ namespace UnicomTICManagementSystem.Data
                     Password TEXT NOT NULL,
                     Role TEXT NOT NULL
                 );
-                INSERT OR IGNORE INTO Users (Username, Password, Role) VALUES
-                ('admin1', 'pass123', 'Admin'),
-                ('staff1', 'staff123', 'Staff'),
-                ('student1', 'student123', 'Student'),
-                ('lec1', 'lec123', 'Lecturer');
                 
-
                 CREATE TABLE IF NOT EXISTS Students (
                     StudentID INTEGER PRIMARY KEY AUTOINCREMENT,
                     Name TEXT NOT NULL,
@@ -85,7 +79,11 @@ namespace UnicomTICManagementSystem.Data
                     AttendanceID INTEGER PRIMARY KEY AUTOINCREMENT,
                     StudentID INTEGER,
                     SubjectID INTEGER,
-                    Date TEXT
+                    Date TEXT,
+                    Status TEXT,
+                    FOREIGN KEY(StudentID) REFERENCES Students(StudentID),
+                    FOREIGN KEY(SubjectID) REFERENCES Subjects(SubjectID)
+                
                 );
                 CREATE TABLE IF NOT EXISTS Courses (
                     CourseID INTEGER PRIMARY KEY AUTOINCREMENT,

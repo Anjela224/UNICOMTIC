@@ -16,7 +16,8 @@ namespace UnicomTICManagementSystem.Controller
         {
             public void AddMark(Mark mark)
             {
-                using (var conn = Dbconfig.GetConnection())
+                
+            using (var conn = Dbconfig.GetConnection())
                 {
                     var cmd = new SQLiteCommand("INSERT INTO Marks (StudentID, ExamID, Score) VALUES (@StudentID, @ExamID, @Score)", conn);
                     cmd.Parameters.AddWithValue("@StudentID", mark.StudentID);

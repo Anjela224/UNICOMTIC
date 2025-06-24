@@ -95,8 +95,20 @@ namespace UnicomTICManagementSystem.View
         {
 
         }
+
+        private void btnregi_Click(object sender, EventArgs e)
+        {
+            RegistrationForm regForm = new RegistrationForm();
+            DialogResult result = regForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                MessageBox.Show("Registration completed.");
+            }
+        }
+
+        }
     }
-    }
+    
 
        
     

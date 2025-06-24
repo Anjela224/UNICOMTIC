@@ -14,7 +14,7 @@ namespace UnicomTICManagementSystem.View
 {
     public partial class ExamMarkManagement : Form
     {
-        private bool isFormLoaded = false;///
+        private bool isFormLoaded = false;
         private int selectedMarkId = -1;
         private SubjectController subjectController = new SubjectController();
         private StudentController studentController = new StudentController();
@@ -47,13 +47,14 @@ namespace UnicomTICManagementSystem.View
 
         private void cmbStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!isFormLoaded) return;
             if (cmbStudent.SelectedValue != null && int.TryParse(cmbStudent.SelectedValue.ToString(), out int studentId))
             {
                 LoadMarksForStudent(studentId);
             }
         }
 
-        
+
 
         private void numMarks_ValueChanged(object sender, EventArgs e)
         {
@@ -70,20 +71,20 @@ namespace UnicomTICManagementSystem.View
             LoadSubjects();
             LoadStudents();
             if (cmbSubject.Items.Count > 0)
-               cmbSubject.SelectedIndex = 0;
-                if (int.TryParse(cmbSubject.SelectedValue?.ToString(), out int subjectId))
+                cmbSubject.SelectedIndex = 0;
+            if (int.TryParse(cmbSubject.SelectedValue?.ToString(), out int subjectId))
             {
                 LoadExams(subjectId);
             }
-        
-                if (cmbStudent.Items.Count > 0)
-                    cmbStudent.SelectedIndex = 0;
 
-                isFormLoaded = true;
+            if (cmbStudent.Items.Count > 0)
+                cmbStudent.SelectedIndex = 0;
+
+            isFormLoaded = true;
         }
-        
 
-        
+
+
         private void LoadSubjects()
         {
             var subjects = subjectController.GetAllSubjects();
@@ -98,15 +99,17 @@ namespace UnicomTICManagementSystem.View
             cmbStudent.DataSource = students;
             cmbStudent.DisplayMember = "Name";
             cmbStudent.ValueMember = "StudentID";
+            cmbStudent.SelectedIndex = -1;
         }
         private void LoadExams(int subjectId)
         {
             var exams = examController.GetExamsBySubject(subjectId);
-            cmbExam.DataSource = exams;
-            cmbExam.DisplayMember = "ExamName";
-            cmbExam.ValueMember = "ExamID";
+            combexam.DataSource = exams;
+            combexam.DisplayMember = "ExamName";
+            combexam.ValueMember = "ExamID";
+            combexam.SelectedIndex = -1;
         }
-    
+
         private void LoadMarksForStudent(int studentId)
         {
             var marks = markController.GetMarksByStudent(studentId);
@@ -118,14 +121,13 @@ namespace UnicomTICManagementSystem.View
         {
             try
             {
-                if (cmbStudent.SelectedValue == null || cmbExam.SelectedValue == null)
+                if (!int.TryParse(cmbStudent.SelectedValue?.ToString(), out int studentId) ||
+                    !int.TryParse(combexam.SelectedValue?.ToString(), out int examId))
                 {
                     MessageBox.Show("Please select both Student and Exam.");
                     return;
                 }
 
-                int studentId = Convert.ToInt32(cmbStudent.SelectedValue);
-                int examId = Convert.ToInt32(cmbExam.SelectedValue);
                 int score = (int)numMarks.Value;
 
                 var mark = new Mark()
@@ -138,8 +140,8 @@ namespace UnicomTICManagementSystem.View
                 markController.AddMark(mark);
 
                 MessageBox.Show("Mark added successfully!");
-                LoadMarksForStudent(studentId); 
-                ClearInputs();                 
+                LoadMarksForStudent(studentId);
+                ClearInputs();
             }
             catch (Exception ex)
             {
@@ -154,6 +156,7 @@ namespace UnicomTICManagementSystem.View
         private void cmbExam_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+
         }
 
         private void cmbExam_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -163,7 +166,7 @@ namespace UnicomTICManagementSystem.View
 
         private void dgvExam_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void dgvMarks_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -173,23 +176,23 @@ namespace UnicomTICManagementSystem.View
             var row = dgvMarks.Rows[e.RowIndex];
             selectedMarkId = Convert.ToInt32(row.Cells["MarkID"].Value);
             cmbStudent.SelectedValue = (int)row.Cells["StudentID"].Value;
-            cmbExam.SelectedValue = (int)row.Cells["ExamID"].Value;
+            combexam.SelectedValue = (int)row.Cells["ExamID"].Value;
             numMarks.Value = Convert.ToDecimal(row.Cells["Score"].Value);
         }
-        
+
 
         private void btnAddMarks_Click_1(object sender, EventArgs e)
         {
             try
             {
-                if (cmbStudent.SelectedValue == null || cmbExam.SelectedValue == null)
+                if (cmbStudent.SelectedValue == null || combexam.SelectedValue == null)
                 {
                     MessageBox.Show("Please select both Student and Exam.");
                     return;
                 }
 
                 int studentId = Convert.ToInt32(cmbStudent.SelectedValue);
-                int examId = Convert.ToInt32(cmbExam.SelectedValue);
+                int examId = Convert.ToInt32(combexam.SelectedValue);
                 int score = (int)numMarks.Value;
 
                 var mark = new Mark()
@@ -226,7 +229,7 @@ namespace UnicomTICManagementSystem.View
             try
             {
                 int studentId = (int)cmbStudent.SelectedValue;
-                int examId = (int)cmbExam.SelectedValue;
+                int examId = (int)combexam.SelectedValue;
                 int score = (int)numMarks.Value;
 
                 var mark = new Mark()
@@ -249,6 +252,16 @@ namespace UnicomTICManagementSystem.View
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        private void combexam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!isFormLoaded) return;
+            if (combexam.SelectedValue != null && int.TryParse(combexam.SelectedValue.ToString(), out int examId))
+            {
+
+
+            }
+        }
     }
-    }
+}
 

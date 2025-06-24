@@ -57,7 +57,7 @@ namespace UnicomTICManagementSystem.View
             LoadTimetable();
             ClearInputs();
         }
-        
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -81,7 +81,7 @@ namespace UnicomTICManagementSystem.View
 
         private void LoadTimeSlots()
         {
-            
+
             cmbTime.Items.Clear();
             cmbTime.Items.AddRange(new string[] { "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "2:00 PM", "3:00 PM" });
             cmbTime.SelectedIndex = 0;
@@ -98,7 +98,7 @@ namespace UnicomTICManagementSystem.View
         };
 
             cmbRoom.DataSource = rooms;
-            cmbRoom.DisplayMember = "RoomName";  
+            cmbRoom.DisplayMember = "RoomName";
             cmbRoom.ValueMember = "RoomID";
         }
         private void LoadTimetable()
@@ -126,7 +126,7 @@ namespace UnicomTICManagementSystem.View
             LoadTimetable();
             ClearInputs();
         }
-        
+
 
         private void dgvTimetables_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -161,10 +161,18 @@ namespace UnicomTICManagementSystem.View
             if (cmbRoom.Items.Count > 0) cmbRoom.SelectedIndex = 0;
         }
 
+        private void datetimepick_ValueChanged(object sender, EventArgs e)
+        {
+            DateTimePicker datetimepick;
+        }
 
+        private void cmbTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
+
 
     
     
